@@ -14,6 +14,8 @@ def get_data():
 
 def write_data(df):
     pd.DataFrame.to_csv(df)
+       
+        
 df = get_data()
 
 games_played = df.game_number.unique()
@@ -37,7 +39,10 @@ def guess(x):
 
     df.loc[len(df.index)] = [current_game, guess, True, False, False]
     print(f'Congratulations! You have guessed the number {random_number} correctly!')
-    df.to_csv ('game_data.csv')
+    df.to_csv ('game_data.csv', mode='a', index=False, header=False)
+    
     
 guess(num_max)
+
+
 

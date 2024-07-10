@@ -29,13 +29,13 @@ def guess(x):
     while guess != random_number:
         guess = int(input(f'Guess a number between 1 and {x}: '))
         if guess < random_number:
-            df.loc[len(df.index)] = [random_number, current_game, guess, False, False, True]
+            df.loc[len(df.index)] = [current_game, guess, False, False, True]
             print('Sorry, guess again. Too low.')
         elif guess > random_number:
-            df.loc[len(df.index)] = [random_number, current_game, guess, False, True, False]
+            df.loc[len(df.index)] = [current_game, guess, False, True, False]
             print('Sorry, guess again. Too high.')
 
-    df.loc[len(df.index)] = [random_number, current_game, guess, True, False, False]
+    df.loc[len(df.index)] = [current_game, guess, True, False, False]
     print(f'Congratulations! You have guessed the number {random_number} correctly!')
     df.to_csv ('game_data.csv')
     
